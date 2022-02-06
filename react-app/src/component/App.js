@@ -13,10 +13,16 @@ export default class TodoApp extends React.Component {
 
   render() {
     return (
-      <div className='container'>
-        <h2>TODO App</h2>
-        <p>Number of TODO: {this.state.todos.length}</p>
-        <Todo item={this.state.todos} />
+      <div className='container mx-auto bg-slate-700'>
+        <div className='p-4 text-zinc-50 shadow'>
+          <p className='text-4xl object-top font-bold'>TODO App</p>
+          <div className='flex flex-row m-2 pt-3'>
+            <div className='basis-3/4'>
+              <Todo item={this.state.todos} />
+            </div>
+            <div className='basis-1/4'></div>
+          </div>
+        </div>
       </div>
     )
   }
