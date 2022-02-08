@@ -14,19 +14,23 @@ export default class TodoApp extends React.Component {
     }
 
     this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleItemDelete = this.handleItemDelete.bind(this);
   }
 
   handleAddTodo(e) {
     const items = this.state.todos;
     items.push(new TodoItem(e, false));
+    this.setState({todos: items});
+  }
 
-    console.log(items);
+  handleItemDelete(e) {
+    const items = this.state.todos.filter(item => item !== e);
     this.setState({todos: items});
   }
 
   render() {
     const items = this.state.todos.map((item) => 
-      <Todo item={item} key={item.text + item.formatCreated()} />
+      <Todo item={item} key={item.text + item.formatCreated()} onItemDelete={this.handleItemDelete} />
     );
 
     return (

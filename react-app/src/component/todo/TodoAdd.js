@@ -11,6 +11,11 @@ export default class TodoAdd extends React.Component {
   handleAddItem(e) {
     e.preventDefault();
     const item = this.state.todoItem;
+
+    if(!item) {
+      return;
+    }
+
     this.setState({todoItem: ''});
     this.props.addTodoHandler(item);    
   }
