@@ -1,26 +1,45 @@
 import './App.css';
 import React from "react"
 import Todo from './todo/Todo'
+import TodoAdd from './todo/TodoAdd'
 import { TodoItem } from '../model/TodoItem'
 
 export default class TodoApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: new TodoItem("Foo", false),
+      todos: [
+        new TodoItem("Foo", false), 
+      ],
     }
+
+    this.handleAddTodo = this.handleAddTodo.bind(this);
+  }
+
+  handleAddTodo(e) {
+    const items = this.state.todos;
+    items.push(new TodoItem(e, false));
+
+    console.log(items);
+    this.setState({todos: items});
   }
 
   render() {
+    const items = this.state.todos.map((item) => 
+      <Todo item={item} key={item.text + item.formatCreated()} />
+    );
+
     return (
-      <div className='container mx-auto bg-slate-700'>
+      <div className='container mx-auto bg-slate-700 mt-8'>
         <div className='p-4 text-zinc-50 shadow'>
-          <p className='text-4xl object-top font-bold'>TODO App</p>
-          <div className='flex flex-row m-2 pt-3'>
-            <div className='basis-3/4'>
-              <Todo item={this.state.todos} />
+          <p className='text-4xl object-top font-bold pl-2'>TODO App</p>
+          <div className='m-2 pt-3'>
+            <div>
+              <TodoAdd addTodoHandler={this.handleAddTodo} />
             </div>
-            <div className='basis-1/4'></div>
+            <div>
+              {items}
+            </div>
           </div>
         </div>
       </div>
