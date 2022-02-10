@@ -14,6 +14,7 @@ export default class TodoApp extends React.Component {
     }
 
     this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleItemDone = this.handleItemDone.bind(this);
     this.handleItemDelete = this.handleItemDelete.bind(this);
   }
 
@@ -28,9 +29,25 @@ export default class TodoApp extends React.Component {
     this.setState({todos: items});
   }
 
+  handleItemDone(e) {
+    const original = this.state.todos
+      .find((candidate) => candidate === e)
+
+    if(!original) {
+      return;
+    }
+
+    original.done = !original.done;
+    this.setState({ todos: this.state.todos });
+  }
+
   render() {
     const items = this.state.todos.map((item) => 
-      <Todo item={item} key={item.text + item.formatCreated()} onItemDelete={this.handleItemDelete} />
+      <Todo item={item}
+            key={item.text + item.formatCreated()}
+            onItemDelete={this.handleItemDelete}
+            onItemDone={this.handleItemDone}
+      />
     );
 
     return (
@@ -39,7 +56,7 @@ export default class TodoApp extends React.Component {
           <p className='text-4xl object-top font-bold pl-2'>TODO App</p>
           <div className='m-2 pt-3'>
             <div>
-              <TodoAdd addTodoHandler={this.handleAddTodo} />
+              <TodoAdd addTodoHandler={this.handleAddTodo} onItemDone={this.handleItemDone} />
             </div>
             <div>
               {items}

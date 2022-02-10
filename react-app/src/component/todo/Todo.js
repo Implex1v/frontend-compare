@@ -6,17 +6,12 @@ import TodoDeleteButton from "./TodoDeleteButton";
 class Todo extends React.Component {
   constructor(props) {
     super(props);
-    
-    this.state = {item: this.props.item};
+
     this.handleDone = this.handleDone.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleDone(e) {
-    const item = this.state.item;
-    item.done = !item.done;
-    this.setState({item: item});
-
     if(this.props.onItemDone) {
       this.props.onItemDone(this.props.item);
     }
@@ -24,13 +19,13 @@ class Todo extends React.Component {
 
   handleDelete(e) {
     if(this.props.onItemDelete) {
-      this.props.onItemDelete(this.state.item);
+      this.props.onItemDelete(this.props.item);
     }
   }
 
   render() {
-    const strike = this.state.item.done ? ' text-green-600 line-through' : '';
-    const button = this.state.item.done ?   
+    const strike = this.props.item.done ? ' text-green-600 line-through' : '';
+    const button = this.props.item.done ?
       <TodoButtonUndo onClick={this.handleDone} /> :
       <TodoButtonDone onClick={this.handleDone} /> ;
 
@@ -38,11 +33,11 @@ class Todo extends React.Component {
       <div className="flex mb-4 items-center">
         <div className="w-full">
           <div>
-            <p className={"w-full"+strike}>{this.state.item.text}</p>
+            <p className={"w-full"+strike}>{this.props.item.text}</p>
           </div>
           <div>
             <p className="text-xs text-slate-300">
-              {this.state.item.formatCreated()}
+              {this.props.item.formatCreated()}
             </p>
           </div>
         </div>
