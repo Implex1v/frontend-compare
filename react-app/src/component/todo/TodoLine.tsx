@@ -1,18 +1,16 @@
 import React from 'react';
-import TodoButtonDone from './TodoButtonDone';
-import TodoButtonUndo from './TodoButtonUndo';
-import TodoDeleteButton from './TodoDeleteButton';
-import { TodoItem } from '../../model/TodoItem';
+import ButtonDone from './ButtonDone';
+import ButtonUndo from './ButtonUndo';
+import DeleteButton from './DeleteButton';
+import { Todo } from '../../model/Todo';
 
 interface TodoProps {
-  onItemDone(item: TodoItem): void;
-
-  onItemDelete(item: TodoItem): void;
-
-  item: TodoItem;
+  onItemDone(item: Todo): void;
+  onItemDelete(item: Todo): void;
+  item: Todo;
 }
 
-export default class Todo extends React.Component<TodoProps> {
+export default class TodoLine extends React.Component<TodoProps> {
   constructor(props: TodoProps) {
     super(props);
 
@@ -33,9 +31,9 @@ export default class Todo extends React.Component<TodoProps> {
   render() {
     const strike = this.props.item.done ? ' text-green-600 line-through' : '';
     const button = this.props.item.done ? (
-      <TodoButtonUndo onClick={this.handleDone} />
+      <ButtonUndo onClick={this.handleDone} />
     ) : (
-      <TodoButtonDone onClick={this.handleDone} />
+      <ButtonDone onClick={this.handleDone} />
     );
 
     return (
@@ -49,7 +47,7 @@ export default class Todo extends React.Component<TodoProps> {
           </div>
         </div>
         {button}
-        <TodoDeleteButton onClick={this.handleDelete} />
+        <DeleteButton onClick={this.handleDelete} />
       </div>
     );
   }

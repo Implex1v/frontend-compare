@@ -1,11 +1,11 @@
 import './App.css';
 import React from 'react';
-import Todo from './todo/Todo';
+import TodoLine from './todo/TodoLine';
 import TodoAdd from './todo/TodoAdd';
-import { TodoItem } from '../model/TodoItem';
+import { Todo } from '../model/Todo';
 
 interface TodoAppState {
-  todos: TodoItem[];
+  todos: Todo[];
 }
 
 export default class TodoApp extends React.Component<any, TodoAppState> {
@@ -20,16 +20,16 @@ export default class TodoApp extends React.Component<any, TodoAppState> {
 
   handleAddTodo(text: string) {
     const items = this.state.todos;
-    items.push(new TodoItem(text, false));
+    items.push(new Todo(text, false));
     this.setState({ todos: items });
   }
 
-  handleItemDelete(itemToDelete: TodoItem) {
+  handleItemDelete(itemToDelete: Todo) {
     const items = this.state.todos.filter((item) => item !== itemToDelete);
     this.setState({ todos: items });
   }
 
-  handleItemDone(item: TodoItem) {
+  handleItemDone(item: Todo) {
     const original = this.state.todos.find((candidate) => candidate === item);
 
     if (!original) {
@@ -42,7 +42,7 @@ export default class TodoApp extends React.Component<any, TodoAppState> {
 
   render() {
     const items = this.state.todos.map((item) => (
-      <Todo
+      <TodoLine
         item={item}
         key={item.text + item.formatCreated()}
         onItemDelete={this.handleItemDelete}

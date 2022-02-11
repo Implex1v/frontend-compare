@@ -1,4 +1,4 @@
-export class TodoItem {
+export class Todo {
   text: string;
   done: boolean;
   created: Date;

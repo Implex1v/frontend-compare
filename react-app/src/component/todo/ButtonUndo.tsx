@@ -4,7 +4,7 @@ interface TodoButtonUndoProps {
   onClick(): void;
 }
 
-export default class TodoButtonUndo extends React.Component<TodoButtonUndoProps> {
+export default class ButtonUndo extends React.Component<TodoButtonUndoProps> {
   props: TodoButtonUndoProps;
 
   constructor(props: TodoButtonUndoProps) {

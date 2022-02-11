@@ -4,7 +4,7 @@ interface TodoButtonDoneProps {
   onClick(): void;
 }
 
-export default class TodoButtonDone extends React.Component<TodoButtonDoneProps> {
+export default class ButtonDone extends React.Component<TodoButtonDoneProps> {
   props: TodoButtonDoneProps;
 
   constructor(props: TodoButtonDoneProps) {

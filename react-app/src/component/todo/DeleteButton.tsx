@@ -4,7 +4,7 @@ interface TodoDeleteButtonProps {
   onClick(): void;
 }
 
-export default class TodoDeleteButton extends React.Component<TodoDeleteButtonProps> {
+export default class DeleteButton extends React.Component<TodoDeleteButtonProps> {
   props: TodoDeleteButtonProps;
 
   constructor(props: TodoDeleteButtonProps) {
