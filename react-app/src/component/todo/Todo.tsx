@@ -1,8 +1,8 @@
-import React from "react";
-import TodoButtonDone from "./TodoButtonDone";
-import TodoButtonUndo from "./TodoButtonUndo";
-import TodoDeleteButton from "./TodoDeleteButton";
-import { TodoItem } from "../../model/TodoItem";
+import React from 'react';
+import TodoButtonDone from './TodoButtonDone';
+import TodoButtonUndo from './TodoButtonUndo';
+import TodoDeleteButton from './TodoDeleteButton';
+import { TodoItem } from '../../model/TodoItem';
 
 interface TodoProps {
   onItemDone(item: TodoItem): void;
@@ -31,7 +31,7 @@ export default class Todo extends React.Component<TodoProps> {
   }
 
   render() {
-    const strike = this.props.item.done ? " text-green-600 line-through" : "";
+    const strike = this.props.item.done ? ' text-green-600 line-through' : '';
     const button = this.props.item.done ? (
       <TodoButtonUndo onClick={this.handleDone} />
     ) : (
@@ -42,7 +42,7 @@ export default class Todo extends React.Component<TodoProps> {
       <div className="flex mb-4 items-center">
         <div className="w-full">
           <div>
-            <p className={"w-full" + strike}>{this.props.item.text}</p>
+            <p className={'w-full' + strike}>{this.props.item.text}</p>
           </div>
           <div>
             <p className="text-xs text-slate-300">{this.props.item.formatCreated()}</p>

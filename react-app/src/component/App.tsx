@@ -1,8 +1,8 @@
-import "./App.css";
-import React from "react";
-import Todo from "./todo/Todo";
-import TodoAdd from "./todo/TodoAdd";
-import { TodoItem } from "../model/TodoItem";
+import './App.css';
+import React from 'react';
+import Todo from './todo/Todo';
+import TodoAdd from './todo/TodoAdd';
+import { TodoItem } from '../model/TodoItem';
 
 interface TodoAppState {
   todos: TodoItem[];

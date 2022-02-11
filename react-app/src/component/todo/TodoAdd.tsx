@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface TodoAddProps {
   addTodoHandler(item: string): void;
@@ -13,7 +13,7 @@ export default class TodoAdd extends React.Component<TodoAddProps, TodoAddState>
 
   constructor(props: TodoAddProps) {
     super(props);
-    this.state = { todoItem: "" };
+    this.state = { todoItem: '' };
     this.props = props;
     this.handleAddItem = this.handleAddItem.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,7 +26,7 @@ export default class TodoAdd extends React.Component<TodoAddProps, TodoAddState>
       return;
     }
 
-    this.setState({ todoItem: "" });
+    this.setState({ todoItem: '' });
     this.props.addTodoHandler(item);
   }
 
