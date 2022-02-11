@@ -6,7 +6,9 @@ import { TodoItem } from "../../model/TodoItem";
 
 interface TodoProps {
   onItemDone(item: TodoItem): void;
+
   onItemDelete(item: TodoItem): void;
+
   item: TodoItem;
 }
 
@@ -43,9 +45,7 @@ export default class Todo extends React.Component<TodoProps> {
             <p className={"w-full" + strike}>{this.props.item.text}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300">
-              {this.props.item.formatCreated()}
-            </p>
+            <p className="text-xs text-slate-300">{this.props.item.formatCreated()}</p>
           </div>
         </div>
         {button}

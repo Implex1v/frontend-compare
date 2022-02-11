@@ -8,10 +8,7 @@ interface TodoAddState {
   todoItem: string;
 }
 
-export default class TodoAdd extends React.Component<
-  TodoAddProps,
-  TodoAddState
-> {
+export default class TodoAdd extends React.Component<TodoAddProps, TodoAddState> {
   props: TodoAddProps;
 
   constructor(props: TodoAddProps) {
