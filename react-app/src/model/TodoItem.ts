@@ -1,15 +1,15 @@
 export class TodoItem {
-    text: string;
-    done: boolean;
-    created: Date;
+  text: string;
+  done: boolean;
+  created: Date;
 
-    constructor(text: string, done: boolean)  {
-        this.text = text;
-        this.done = done;
-        this.created = new Date();
-    }
+  constructor(text: string, done: boolean) {
+    this.text = text;
+    this.done = done;
+    this.created = new Date();
+  }
 
-    formatCreated(): string {
-        return this.created.toLocaleString()
-    }
+  formatCreated(): string {
+    return this.created.toLocaleString();
+  }
 }

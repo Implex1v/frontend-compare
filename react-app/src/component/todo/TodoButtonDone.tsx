@@ -1,13 +1,13 @@
 import React from "react";
 
 interface TodoButtonDoneProps {
-  onClick(): void
+  onClick(): void;
 }
 
 export default class TodoButtonDone extends React.Component<TodoButtonDoneProps> {
   props: TodoButtonDoneProps;
 
-  constructor(props: TodoButtonDoneProps)  {
+  constructor(props: TodoButtonDoneProps) {
     super(props);
     this.props = props;
 
@@ -19,12 +19,13 @@ export default class TodoButtonDone extends React.Component<TodoButtonDoneProps>
   }
 
   render() {
-      return (
-        <button
-            onClick={this.handleOnClick}
-            className="flex-no-shrink ml-4 p-2 border-2 rounded text-green-600 border-green-600 hover:text-slate-300 hover:bg-green-600">
-            Done
-        </button>
-      );
+    return (
+      <button
+        onClick={this.handleOnClick}
+        className="flex-no-shrink ml-4 p-2 border-2 rounded text-green-600 border-green-600 hover:text-slate-300 hover:bg-green-600"
+      >
+        Done
+      </button>
+    );
   }
 }

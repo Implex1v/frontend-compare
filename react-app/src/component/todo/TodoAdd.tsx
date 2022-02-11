@@ -5,16 +5,19 @@ interface TodoAddProps {
 }
 
 interface TodoAddState {
-  todoItem: string
+  todoItem: string;
 }
 
-export default class TodoAdd extends React.Component<TodoAddProps, TodoAddState> {
-  props: TodoAddProps
+export default class TodoAdd extends React.Component<
+  TodoAddProps,
+  TodoAddState
+> {
+  props: TodoAddProps;
 
   constructor(props: TodoAddProps) {
     super(props);
-    this.state = { todoItem: '' }
-    this.props = props
+    this.state = { todoItem: "" };
+    this.props = props;
     this.handleAddItem = this.handleAddItem.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -22,16 +25,16 @@ export default class TodoAdd extends React.Component<TodoAddProps, TodoAddState>
   handleAddItem() {
     const item = this.state.todoItem;
 
-    if(!item) {
+    if (!item) {
       return;
     }
 
-    this.setState({todoItem: ''});
-    this.props.addTodoHandler(item);    
+    this.setState({ todoItem: "" });
+    this.props.addTodoHandler(item);
   }
 
   handleInputChange(e: React.FormEvent<HTMLInputElement>) {
-    this.setState({todoItem: e.currentTarget.value});
+    this.setState({ todoItem: e.currentTarget.value });
   }
 
   render() {
@@ -41,11 +44,12 @@ export default class TodoAdd extends React.Component<TodoAddProps, TodoAddState>
           type="text"
           value={this.state.todoItem}
           onChange={this.handleInputChange}
-          className="w-full p-2 rounded text-slate-900">
-        </input>
-        <button 
+          className="w-full p-2 rounded text-slate-900"
+        />
+        <button
           onClick={this.handleAddItem}
-          className="flex-no-shrink ml-4 p-2 border-2 rounded text-green-600 border-green-600 hover:text-slate-300 hover:bg-green-600">
+          className="flex-no-shrink ml-4 p-2 border-2 rounded text-green-600 border-green-600 hover:text-slate-300 hover:bg-green-600"
+        >
           Add
         </button>
       </div>
