@@ -2,22 +2,28 @@ import React from "react";
 import TodoButtonDone from "./TodoButtonDone";
 import TodoButtonUndo from "./TodoButtonUndo";
 import TodoDeleteButton from "./TodoDeleteButton";
+import { TodoItem } from "../../model/TodoItem";
 
-class Todo extends React.Component {
-  constructor(props) {
+
+interface TodoProps {
+  onItemDone(item: TodoItem): void
+  onItemDelete(item: TodoItem): void
+  item: TodoItem
+}
+
+export default class Todo extends React.Component<TodoProps> {
+  constructor(props: TodoProps) {
     super(props);
 
     this.handleDone = this.handleDone.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleDone(e) {
-    if(this.props.onItemDone) {
-      this.props.onItemDone(this.props.item);
-    }
+  handleDone() {
+    this.props.onItemDone(this.props.item);
   }
 
-  handleDelete(e) {
+  handleDelete() {
     if(this.props.onItemDelete) {
       this.props.onItemDelete(this.props.item);
     }
@@ -47,5 +53,3 @@ class Todo extends React.Component {
     );
   }
 }
-
-export default Todo;

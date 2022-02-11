@@ -1,16 +1,21 @@
 import React from "react";
 
-export default class TodoButtonDone extends React.Component {
-  constructor(props)  {
+interface TodoButtonDoneProps {
+  onClick(): void
+}
+
+export default class TodoButtonDone extends React.Component<TodoButtonDoneProps> {
+  props: TodoButtonDoneProps;
+
+  constructor(props: TodoButtonDoneProps)  {
     super(props);
+    this.props = props;
 
     this.handleOnClick = this.handleOnClick.bind(this);
   }
 
-  handleOnClick(e) {
-    if(this.props.onClick) {
-      this.props.onClick(e)
-    }
+  handleOnClick() {
+    this.props.onClick();
   }
 
   render() {

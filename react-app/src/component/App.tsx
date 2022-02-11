@@ -4,34 +4,34 @@ import Todo from './todo/Todo'
 import TodoAdd from './todo/TodoAdd'
 import { TodoItem } from '../model/TodoItem'
 
-export default class TodoApp extends React.Component {
-  constructor(props) {
+interface TodoAppState {
+  todos: TodoItem[]
+}
+
+export default class TodoApp extends React.Component<any, TodoAppState> {
+  constructor(props: any) {
     super(props);
-    this.state = {
-      todos: [
-        new TodoItem("Foo", false), 
-      ],
-    }
+    this.state = { todos: [] }
 
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleItemDone = this.handleItemDone.bind(this);
     this.handleItemDelete = this.handleItemDelete.bind(this);
   }
 
-  handleAddTodo(e) {
+  handleAddTodo(text: string) {
     const items = this.state.todos;
-    items.push(new TodoItem(e, false));
+    items.push(new TodoItem(text, false));
     this.setState({todos: items});
   }
 
-  handleItemDelete(e) {
-    const items = this.state.todos.filter(item => item !== e);
+  handleItemDelete(itemToDelete: TodoItem) {
+    const items = this.state.todos.filter(item => item !== itemToDelete);
     this.setState({todos: items});
   }
 
-  handleItemDone(e) {
+  handleItemDone(item: TodoItem) {
     const original = this.state.todos
-      .find((candidate) => candidate === e)
+      .find((candidate) => candidate === item)
 
     if(!original) {
       return;
@@ -51,12 +51,12 @@ export default class TodoApp extends React.Component {
     );
 
     return (
-      <div className='container mx-auto bg-slate-700 mt-8'>
-        <div className='p-4 text-zinc-50 shadow'>
+      <div className='container mx-auto bg-slate-700 pt-4 pb-4 shadow'>
+        <div className='p-4 text-zinc-50'>
           <p className='text-4xl object-top font-bold pl-2'>TODO App</p>
           <div className='m-2 pt-3'>
             <div>
-              <TodoAdd addTodoHandler={this.handleAddTodo} onItemDone={this.handleItemDone} />
+              <TodoAdd addTodoHandler={this.handleAddTodo} />
             </div>
             <div>
               {items}

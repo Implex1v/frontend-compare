@@ -1,16 +1,21 @@
 import React from "react";
 
-export default class TodoDeleteButton extends React.Component {
-  constructor(props)  {
+interface TodoDeleteButtonProps {
+  onClick(): void
+}
+
+export default class TodoDeleteButton extends React.Component<TodoDeleteButtonProps> {
+  props: TodoDeleteButtonProps;
+
+  constructor(props: TodoDeleteButtonProps)  {
     super(props);
+    this.props = props;
 
     this.handleOnClick = this.handleOnClick.bind(this);
   }
 
-  handleOnClick(e) {
-    if(this.props.onClick) {
-      this.props.onClick(e)
-    }
+  handleOnClick() {
+    this.props.onClick()
   }
 
   render() {

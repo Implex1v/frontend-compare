@@ -1,15 +1,25 @@
 import React from "react";
 
-export default class TodoAdd extends React.Component {
-  constructor(props) {
+interface TodoAddProps {
+  addTodoHandler(item: string): void;
+}
+
+interface TodoAddState {
+  todoItem: string
+}
+
+export default class TodoAdd extends React.Component<TodoAddProps, TodoAddState> {
+  props: TodoAddProps
+
+  constructor(props: TodoAddProps) {
     super(props);
     this.state = { todoItem: '' }
+    this.props = props
     this.handleAddItem = this.handleAddItem.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleAddItem(e) {
-    e.preventDefault();
+  handleAddItem() {
     const item = this.state.todoItem;
 
     if(!item) {
@@ -20,8 +30,8 @@ export default class TodoAdd extends React.Component {
     this.props.addTodoHandler(item);    
   }
 
-  handleInputChange(e) {
-    this.setState({todoItem: e.target.value});
+  handleInputChange(e: React.FormEvent<HTMLInputElement>) {
+    this.setState({todoItem: e.currentTarget.value});
   }
 
   render() {
@@ -31,8 +41,8 @@ export default class TodoAdd extends React.Component {
           type="text"
           value={this.state.todoItem}
           onChange={this.handleInputChange}
-          className="w-full p-2 rounded text-slate-900"
-        ></input>
+          className="w-full p-2 rounded text-slate-900">
+        </input>
         <button 
           onClick={this.handleAddItem}
           className="flex-no-shrink ml-4 p-2 border-2 rounded text-green-600 border-green-600 hover:text-slate-300 hover:bg-green-600">

@@ -1,16 +1,21 @@
 import React from "react";
 
-export default class TodoButtonUndo extends React.Component {
-  constructor(props)  {
+interface TodoButtonUndoProps {
+  onClick(): void
+}
+
+export default class TodoButtonUndo extends React.Component<TodoButtonUndoProps> {
+  props: TodoButtonUndoProps
+
+  constructor(props: TodoButtonUndoProps)  {
     super(props);
+    this.props = props;
 
     this.handleOnClick = this.handleOnClick.bind(this);
   }
 
-  handleOnClick(e) {
-    if(this.props.onClick) {
-      this.props.onClick(e)
-    }
+  handleOnClick() {
+    this.props.onClick();
   }
 
   render() {
