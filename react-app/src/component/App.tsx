@@ -1,7 +1,6 @@
-import './App.css';
 import React from 'react';
-import TodoLine from './todo/TodoLine';
-import TodoAdd from './todo/TodoAdd';
+import TodoLine from './TodoLine';
+import TodoAdd from './TodoAdd';
 import { Todo } from '../model/Todo';
 
 interface TodoAppState {

@@ -2,7 +2,7 @@ import React from 'react';
 import ButtonDone from './ButtonDone';
 import ButtonUndo from './ButtonUndo';
 import DeleteButton from './DeleteButton';
-import { Todo } from '../../model/Todo';
+import { Todo } from '../model/Todo';
 
 interface TodoProps {
   onItemDone(item: Todo): void;
