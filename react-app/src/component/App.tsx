@@ -2,15 +2,22 @@ import React from 'react';
 import TodoLine from './TodoLine';
 import TodoAdd from './TodoAdd';
 import { Todo } from '../model/Todo';
+import { IStorage } from '../logic/Storage';
+
+interface TodoAppProps {
+  storage: IStorage;
+}
 
 interface TodoAppState {
   todos: Todo[];
 }
 
-export default class TodoApp extends React.Component<any, TodoAppState> {
-  constructor(props: any) {
+export default class TodoApp extends React.Component<TodoAppProps, TodoAppState> {
+  constructor(props: TodoAppProps) {
     super(props);
-    this.state = { todos: [] };
+    this.state = {
+      todos: this.props.storage.load(),
+    };
 
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleItemDone = this.handleItemDone.bind(this);
@@ -18,13 +25,15 @@ export default class TodoApp extends React.Component<any, TodoAppState> {
   }
 
   handleAddTodo(text: string) {
-    const items = this.state.todos;
+    let items = this.state.todos;
     items.push(new Todo(text, false));
+    items = this.props.storage.store(items);
     this.setState({ todos: items });
   }
 
   handleItemDelete(itemToDelete: Todo) {
-    const items = this.state.todos.filter((item) => item !== itemToDelete);
+    let items = this.state.todos.filter((item) => item !== itemToDelete);
+    items = this.props.storage.store(items);
     this.setState({ todos: items });
   }
 
@@ -36,10 +45,13 @@ export default class TodoApp extends React.Component<any, TodoAppState> {
     }
 
     original.done = !original.done;
-    this.setState({ todos: this.state.todos });
+    const items = this.props.storage.store(this.state.todos);
+    this.setState({ todos: items });
   }
 
   render() {
+    console.log(this.state.todos);
+
     const items = this.state.todos.map((item) => (
       <TodoLine
         item={item}

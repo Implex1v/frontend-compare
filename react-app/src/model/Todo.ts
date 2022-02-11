@@ -3,10 +3,10 @@ export class Todo {
   done: boolean;
   created: Date;
 
-  constructor(text: string, done: boolean) {
+  constructor(text: string, done: boolean, created: Date = new Date()) {
     this.text = text;
     this.done = done;
-    this.created = new Date();
+    this.created = created;
   }
 
   formatCreated(): string {
