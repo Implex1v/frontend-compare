@@ -6,7 +6,7 @@ COPY package.json ./package.json
 RUN npm install
 
 COPY . .
-RUN npm test -- --watchAll=false
+RUN npm test -- --watchAll=false --coverage
 RUN npm run build
 
 FROM nginx:1.21.6-alpine
