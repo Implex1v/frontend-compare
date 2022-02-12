@@ -7,6 +7,6 @@ on:
 
 jobs:
   build:
-    uses: Implex1v/frontend-compare/.github/workflows/_build.yml
+    uses: Implex1v/frontend-compare/.github/workflows/_build.yml@main
     with:
       component: react-app
