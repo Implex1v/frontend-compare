@@ -1,0 +1,23 @@
+name: build
+on: 
+  workflow_call:
+    inputs:
+      component:
+        required: true
+        type: string
+      runsOn:
+        required: false
+        type: string
+        default: ubuntu-20.04
+
+defaults:
+  run:
+    shell: bash
+  
+jobs:
+  build:
+    runs-on: ${{ inputs.runsOn }}
+    steps:
+      - name: docker build
+        run: |
+          docker-compose build ${{ inputs.component }} -t ${{ inputs.component }}

@@ -1,0 +1,12 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - react-app/
+
+jobs:
+  build:
+    uses: Implex1v/frontend-compare/.github/workflows/_build.yml
+    with:
+      component: react-app
