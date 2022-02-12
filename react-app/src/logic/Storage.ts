@@ -31,7 +31,7 @@ export class LocalStore implements LocalStore {
         return [];
       }
 
-      return parsed.map((item) => new Todo(item.text, item.done, item.created));
+      return parsed.map((item) => new Todo(item.text, item.done, new Date(item.created)));
     } catch (ex) {
       return [];
     }

@@ -42,6 +42,7 @@ export default class TodoAdd extends React.Component<TodoAddProps, TodoAddState>
           value={this.state.todoItem}
           onChange={this.handleInputChange}
           className="w-full p-2 rounded text-slate-900"
+          data-testid="todo-input"
         />
         <button
           onClick={this.handleAddItem}

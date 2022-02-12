@@ -23,6 +23,7 @@ export default class ButtonUndo extends React.Component<TodoButtonUndoProps> {
       <button
         onClick={this.handleOnClick}
         className="flex-no-shrink ml-4 p-2 border-2 rounded text-slate-500 border-slate-500 hover:text-slate-300 hover:bg-slate-500"
+        data-testid="todo-undo-button"
       >
         Undo
       </button>

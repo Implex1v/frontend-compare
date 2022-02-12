@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonDone from './ButtonDone';
 import ButtonUndo from './ButtonUndo';
-import DeleteButton from './DeleteButton';
+import ButtonDelete from './ButtonDelete';
 import { Todo } from '../model/Todo';
 
 interface TodoProps {
@@ -47,7 +47,7 @@ export default class TodoLine extends React.Component<TodoProps> {
           </div>
         </div>
         {button}
-        <DeleteButton onClick={this.handleDelete} />
+        <ButtonDelete onClick={this.handleDelete} />
       </div>
     );
   }

@@ -1,7 +1,12 @@
 FROM node:17.4.0-bullseye as build
 WORKDIR /app
-COPY . .
+ENV NODE_ENV production
+
+COPY package.json ./package.json
 RUN npm install
+
+COPY . .
+#RUN npm run test
 RUN npm run build
 
 FROM nginx:1.21.6-alpine

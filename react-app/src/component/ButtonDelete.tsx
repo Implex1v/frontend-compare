@@ -4,7 +4,7 @@ interface TodoDeleteButtonProps {
   onClick(): void;
 }
 
-export default class DeleteButton extends React.Component<TodoDeleteButtonProps> {
+export default class ButtonDelete extends React.Component<TodoDeleteButtonProps> {
   props: TodoDeleteButtonProps;
 
   constructor(props: TodoDeleteButtonProps) {
@@ -23,6 +23,7 @@ export default class DeleteButton extends React.Component<TodoDeleteButtonProps>
       <button
         onClick={this.handleOnClick}
         className="flex-no-shrink ml-2 p-2 border-2 rounded text-red-600 border-red-600 hover:text-slate-300 hover:bg-red-600"
+        data-testid="todo-delete-item"
       >
         Delete
       </button>

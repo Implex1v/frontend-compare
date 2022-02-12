@@ -23,6 +23,7 @@ export default class ButtonDone extends React.Component<TodoButtonDoneProps> {
       <button
         onClick={this.handleOnClick}
         className="flex-no-shrink ml-4 p-2 border-2 rounded text-green-600 border-green-600 hover:text-slate-300 hover:bg-green-600"
+        data-testid="todo-done-button"
       >
         Done
       </button>
