@@ -1,4 +1,4 @@
-name: build
+name: _build
 on: 
   workflow_call:
     inputs:
@@ -19,7 +19,6 @@ jobs:
     runs-on: ${{ inputs.runsOn }}
     steps:
       - name: docker build
-        working-directory: ./
         run: |
           pwd
           docker-compose build ${{ inputs.component }}

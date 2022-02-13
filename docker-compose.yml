@@ -1,8 +1,8 @@
-version: "3.9"
+version: "3.7"
 services:
   react-app:
     image: frontend-compare-react
     build:
-      context: ./react-app/
+      context: ./react-app
     ports:
     - "8000:80"
