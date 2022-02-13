@@ -19,7 +19,7 @@ jobs:
     runs-on: ${{ inputs.runsOn }}
     steps:
       - name: docker build
-        working-directory: ./${{ inputs.component }}/
+        working-directory: ${{ inputs.component }}/
         run: |
           pwd
           docker build -t ${{ inputs.component }} .
