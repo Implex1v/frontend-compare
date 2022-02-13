@@ -18,8 +18,7 @@ jobs:
   build:
     runs-on: ${{ inputs.runsOn }}
     steps:
+      - uses: actions/checkout@v2 
       - name: docker build
-        working-directory: ${{ inputs.component }}/
         run: |
-          pwd
-          docker build -t ${{ inputs.component }} .
+          docker-compose build ${{ inputs.component }}
