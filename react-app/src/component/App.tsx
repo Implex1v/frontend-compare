@@ -50,8 +50,6 @@ export default class TodoApp extends React.Component<TodoAppProps, TodoAppState>
   }
 
   render() {
-    console.log(this.state.todos);
-
     const items = this.state.todos.map((item) => (
       <TodoLine
         item={item}
